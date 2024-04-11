@@ -32,15 +32,15 @@ const userSchema = new Schema(
             required: true,
             minlength: 8,
         },
-        client: {
-            type: Schema.Types.ObjectId,
-            ref: 'Client'
-        },
-        admin: {
-            type: Boolean,
-            default: false
-        },
+        // client: {
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Client'
+        // },
         // admin: {
+        //     type: Boolean,
+        //     default: false
+        // },
+        // // admin: {
         //     adminSchema
         // }
         // firstName: {

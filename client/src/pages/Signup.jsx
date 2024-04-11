@@ -5,17 +5,14 @@ import { ADD_USER } from '../utils/mutations';
 import '../App.css'
 // import { useAuth } from '../utils/authContext';
 function Signup() {
-    const [formData, setFormData] = useState({ username: "", email: "", password: "", phone: "", admin: false });
+    const [formData, setFormData] = useState({ username: "", email: "", password: "", phone: "" });
     // const { loggedIn, setLoggedIn } = useAuth()
 
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        setFormData({...formData, [name]: value})
     };
 
 
@@ -28,7 +25,7 @@ function Signup() {
                 variables: { ...formData }
             });
             console.log("Form Data:", data); // Optional: Handle the response data as needed
-            setLoggedIn(true)
+            Auth.login(data.addUser.token);
             // Reset form data after successful submission
             setFormData({ username: "", email: "", password: "", phone: "" });
             window.location.assign('/Store')
@@ -75,8 +72,8 @@ function Signup() {
                     {/* <label className="label" htmlFor="phone">Phone:</label> */}
                     <input
                         className="input-field"
-                        placeholder='Phnone Number'
-                        type="phone"
+                        placeholder='Phone Number'
+                        type="text"
                         id="phone"
                         name="phone"
                         value={formData.phone}

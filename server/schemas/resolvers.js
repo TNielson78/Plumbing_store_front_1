@@ -1,7 +1,6 @@
 const { User, Product, Client, Cart } = require('../models');
-const { add } = require('../models/Cart');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const bcrypt = require('bcrypt');
+
 
 const resolvers = {
     Query: {
@@ -15,7 +14,7 @@ const resolvers = {
             if (context.user) {
                 return User.findOne({ _id: context.user._id });
             }
-            throw new AuthenticationError('Not logged in');
+            throw AuthenticationError('Not logged in');
         },
         products: async () => {
             return Product.find();
@@ -29,21 +28,20 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, { username, email, password, phone, admin }) => {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const user = await User.create({ username, email, password: hashedPassword, phone, admin });
+        addUser: async (parent, { username, email, password, phone }) => {
+            const user = await User.create({ username, email, password, phone});
             const token = signToken(user);
             return { token, user };
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if (!user) {
-                throw new AuthenticationError('Incorrect credentials');
+                throw AuthenticationError('Incorrect credentials');
             }
 
             const correctPw = await user.isCorrectPassword(password);
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials');
+                throw AuthenticationError('Incorrect credentials');
             }
 
             const token = signToken(user);
@@ -76,13 +74,13 @@ const resolvers = {
                 return updatedUser;
             } catch (error) {
                 console.error("Error updating user:", error);
-                throw new Error("Failed to update user");
+                throw AuthenticationError("Failed to update user");
             }
         },
 
         addProfile: async (parent, { firstname, lastname, contact }, context) => {
             if (!context.user) {
-                throw new AuthenticationError('You must be logged in to perform this action');
+                throw AuthenticationError('You must be logged in to perform this action');
             }
             
             const newClient = await Client.create({ firstname, lastname, contact });
@@ -95,7 +93,7 @@ const resolvers = {
         },
         addToCart: async (parent, { product }, context) => {
             if (!context.user) {
-                throw new AuthenticationError('You must be logged in to perform this action');
+                throw AuthenticationError('You must be logged in to perform this action');
             }
 
             const cart = new Cart({ product });
