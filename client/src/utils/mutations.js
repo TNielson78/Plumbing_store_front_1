@@ -21,7 +21,6 @@ mutation addUser($username: String!, $email: String!, $password: String!, $phone
       _id
       username
       email
-      password
       phone
       
     }
@@ -36,7 +35,6 @@ mutation udateUser($id: ID!, $admin: Boolean) {
     _id
     username
     email
-    password
     phone
     admin
   }
