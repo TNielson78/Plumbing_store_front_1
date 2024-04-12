@@ -29,17 +29,17 @@ mutation addUser($username: String!, $email: String!, $password: String!, $phone
 `;
 
 
-export const UPDATE_USER_ADMIN = gql`
-mutation udateUser($id: ID!, $admin: Boolean) {
-  updateUser(_id: $id, admin: $admin) {
-    _id
-    username
-    email
-    phone
-    admin
-  }
-}
-`;
+// export const UPDATE_USER_ADMIN = gql`
+// mutation udateUser($id: ID!, $admin: Boolean) {
+//   updateUser(_id: $id, admin: $admin) {
+//     _id
+//     username
+//     email
+//     phone
+//     admin
+//   }
+// }
+// `;
 
 export const DELETE_USER = gql`
   mutation deleteUser($id: ID!) {

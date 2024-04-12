@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useImperativeHandle, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
@@ -22,7 +22,7 @@ function Signup() {
 
         try {
             const { data } = await addUser({
-                variables: { ...formData }
+                variables: {username: formData.username, email: formData.email, password: formData.password, phone: formData.phone}
             });
             console.log("Form Data:", data); // Optional: Handle the response data as needed
             Auth.login(data.addUser.token);
