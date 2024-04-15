@@ -25,8 +25,10 @@ Anyone can contribute
 ## Tests
 N/A
 
-## Credit
-N/A
+## Credits
+Theron Mitchell
+James Dwire
+Anthony Pinski
 
 ## License
 MIT
