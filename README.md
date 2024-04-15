@@ -1,7 +1,9 @@
 # Plumbing_store_front
+T. Nielson 
+Project#3
 
 ## Description
-Add later
+Plumbing app with storefront for Peterson Plumbing supply
 
 ## Table of Contents
 - [Installation](#installation)
@@ -12,19 +14,21 @@ Add later
 - [License](#license)
 
 ## Installation
-None
+Run in any modern web browser.
 
 ## Usage
-Anyone can use
+You can sign up and login to view inventory on hand and select items as needed.
 
 ## Contributing
 Anyone can contribute
 
 ## Tests
-None
+N/A
 
 ## Credit
-None
+N/A
 
 ## License
-None
+MIT
+![Peterson screenshot](https://github.com/TNielson78/Plumbing_store_front_1/assets/147010160/e6f44a74-ac1e-4837-8d2e-0a92ae9d892f)
+
